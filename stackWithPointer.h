@@ -1,6 +1,6 @@
 struct TpStack{
     int elem;
-    TpPilha *topo;
+    TpStack *topo;
 };
 
 TpStack* init(void){
