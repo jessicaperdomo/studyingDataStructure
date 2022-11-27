@@ -1,3 +1,5 @@
+/**Remember that Queue make the insertion in the beginning and remove of the end**/
+
 struct TpQueue{
 	int elem;
 	TpQueue *prox;

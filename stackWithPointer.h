@@ -1,3 +1,5 @@
+/** Remember that a stack make the insertion and remove of the top **/
+
 struct TpStack{
     int elem;
     TpStack *top;
