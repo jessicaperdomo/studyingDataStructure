@@ -39,7 +39,7 @@ void push(int e, Descriptor &desc){
 }
 
 void pop(Descriptor &desc){
-	TpQueue *aux=desc.start;
+	TpQueue *aux=desc.end;
 	
 	if(aux->next == NULL){
 		delete(aux);
@@ -47,12 +47,8 @@ void pop(Descriptor &desc){
 		desc.end = NULL;
 	}
 	else{
-		while(aux->next != NULL){
-			aux=aux->next;
-		}
-		
-		desc.end = aux->before;
+		aux->before->next=NULL;
+		desc.end = aux->before; 
 		delete(aux);
-		desc.end->prox=NULL;
 	}
 }

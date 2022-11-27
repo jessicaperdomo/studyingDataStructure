@@ -20,7 +20,7 @@ char isQueueEmpty(TpQueue *f){
 
 int elementFromStart(TpQueue *f){
 	TpQueue *aux=f;
-	while(aux!=NULL){
+	while(aux->prox!=NULL){
 		aux=aux->prox;
 	}
 	return aux->elem;
