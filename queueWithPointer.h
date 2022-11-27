@@ -5,18 +5,12 @@ struct TpQueue{
 	TpQueue *prox;
 };
 
-struct Descriptor{
-	TpQueue *start;
-	TpQueue *end;
-};
-
-void init(Descriptor &desc){
-	desc.start = NULL;
-	desc.end = NULL;
+TpQueue* init(TpQueue *f){
+	return NULL;
 }
 
-char isQueueNull(Descriptor desc){
-    if(desc.start==NULL){
+char isQueueEmpty(TpQueue *f){
+    if(f==NULL){
         return 1;
     }
     else{
@@ -24,43 +18,44 @@ char isQueueNull(Descriptor desc){
     }
 }
 
-int elementFromStart(Descriptor desc){
-	return desc.end->elem;
+int elementFromStart(TpQueue *f){
+	TpQueue *aux=f;
+	while(aux!=NULL){
+		aux=aux->prox;
+	}
+	return aux->elem;
 }
 
-void push(int e, Descriptor &desc){
+TpQueue* push(int e, TpQueue *f){
      TpQueue *NC = new TpQueue();
      NC -> elem = e;
      NC -> prox = NULL;
      
-     if(desc.start == NULL){
-     	desc.start=NC;
-     	desc.end=NC;
+     if(f == NULL){
+     	return NC;
      }
      else{
-     	NC->prox = desc.start;
-		desc.start = NC;
+     	NC->prox = f;
+		return NC;
      }
 }
 
-void pop(Descriptor &desc){
-     TpQueue *NC=desc.start;
+TpQueue* pop(TpQueue *f){
      
-     if(desc.start == desc.end){
-     	delete(NC);
-     	desc.start=NULL;
-     	desc.end=NULL;
+     if(f->prox == NULL){
+     	delete(f);
+     	return NULL;
      }
      else{
-     	TpQueue *ant=NC;
+	 	TpQueue *NewC=f,*before=f;
      	
-	     while(NC->prox!=NULL){
-	     	ant=NC;
-	     	NC=NC->prox;	
+	     while(NewC->prox!=NULL){
+	     	ant=NewC;
+	     	NewC=NewC->prox;	
 	     }
 	     
-	     desc.end=ant;
-	     ant->prox=NULL;
-	     delete(NC);
+	     delete(NewC);
+	     before->prox=NULL;
+	     return f;
      }
 }
