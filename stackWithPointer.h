@@ -17,14 +17,14 @@ char isStackNull(TpStack *p){
 }
 
 TpStack *p push(int e, TpStack *p){
-     TpPilha *NC = new TpPilha();
+     TpStack *NC = new TpStack();
      NC -> elem = e;
-     NC -> prox = p;
+     NC -> top = p;
      return NC;
 }
 
 TpStack *p pop(TpStack *p){
-     TpPilha *NC = p->prox;
+     TpStack *NC = p->top;
 	 delete(p);
      return NC;
 }
