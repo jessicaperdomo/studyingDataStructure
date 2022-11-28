@@ -60,3 +60,20 @@ void push(Descriptor &desc, int e, int p){
 		
 	}
 }
+
+void pop(Descriptor &desc){
+	
+	if(desc.start->prox == NULL){
+		delete(desc.start);
+		desc.start=NULL;
+		desc.end=NULL;
+	}
+	else{
+		TpQueue *aux=desc.end;
+		
+		desc.end=aux->ant;
+		desc.end->prox=NULL;
+		
+		delete(aux);
+	}
+}
