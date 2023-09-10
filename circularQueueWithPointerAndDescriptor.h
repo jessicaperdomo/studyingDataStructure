@@ -1,7 +1,0 @@
-struct circularQueue{
-	
-};
-
-struct descriptor{
-	
-};
